@@ -1,0 +1,46 @@
+* {
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin-top: 0;
+    background: #565FE3;
+    color: #FFFFFF;
+    padding: 2px;
+}
+
+h2, h3, h4 {
+    color: #666666;
+    margin-left: 9pt;
+}
+
+p {
+    font-size: 9pt;
+    margin-left: 9pt;
+}
+
+code {
+    font-family: monospace;
+    padding: 1px;
+    font-size: 8pt;
+}
+
+pre {
+    margin: 9pt;
+    padding: 4px;
+    font-family: monospace;
+    font-size: 8pt;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: 1px solid #C3C3C3;
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word; /* Internet Explorer 5.5+ */
+}
