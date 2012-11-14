@@ -3,11 +3,11 @@
 angular.module('app', ['api']).
   config(function($routeProvider) {
     $routeProvider.
-      when('/', {controller:IndexCtrl, templateUrl:'views/search.html'}).
+      when('/', {controller:IndexCtrl, templateUrl:'views/default.html'}).
       when('/stats', {controller:StatsCtrl, templateUrl:'views/stats.html'}).
       when('/search/:key', {controller:SearchCtrl, templateUrl:'views/search.html'}).
       when('/about', {controller:AboutCtrl, templateUrl:'views/about.html'}).
-      otherwise({redirectTo:'/'});
+      otherwise({redirectTo:'/search/'});
 });
 
 function IndexCtrl($scope, $location, GmhApi) {
