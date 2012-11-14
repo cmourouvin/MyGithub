@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html ng-app>
+<html ng-app="app">
 <head>
 <meta charset="UTF-8">
 <title>Welcome on GitMyHub</title>
 
 <!-- CSS -->
-<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css"
-	type="text/css">
+<link rel="stylesheet" href="scripts/bootstrap/css/bootstrap.css" type="text/css">
 <!-- Javascript -->
 <script src="http://code.angularjs.org/1.1.0/angular.js"></script>
+<script src="http://code.angularjs.org/1.1.0/angular-resource.js"></script>
 <!-- <script src="scripts/gmh/githubapi.js"></script> -->
-<script src="scripts/gmh/phones.js"></script>
+<!-- <script src="scripts/gmh/phones.js"></script> -->
+<script src="scripts/gmh/api-modules.js"></script>
+<script src="scripts/gmh/app-engine.js"></script>
 
 <style>
 body {
 	padding-top: 60px;
-	/* 60px to make the container go all the way to the bottom of the topbar */
 }
+.pagination-centered{text-align:center;}
+
 </style>
 
 </head>
@@ -31,9 +34,9 @@ body {
 				</a> <a class="brand" href="#">Git My Hub</a>
 				<div class="nav-collapse collapse">
 					<ul class="nav">
-						<li class="active"><a href="#">Search</a></li>
-						<li><a href="#about">Stats</a></li>
-						<li><a href="#contact">About me</a></li>
+						<li class="active"><a href="#/search">Search</a></li>
+						<li><a href="#/stats">Stats</a></li>
+						<li><a href="/stats">About me</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -41,32 +44,23 @@ body {
 		</div>
 	</div>
 
-	<div class="container" >
-		<h1>Repository search {{yourSearch}} !</h1>
-			Your search here : <input type="search" class="search-query" ng-model="yourSearch" placeholder="Saisir le mot clé"> 
-		<form>
-<!-- 			<input type="submit" id="btnSubmit" value="Search" class="btn-primary"> -->
-		</form>
-		<div ng-view></div>
-	</div>
-	
-	
-	<div ng-controller="PhoneListCtrl">
-		<ul>
-			<li ng-repeat="phone in phones">{{phone.name}}
-				<p>{{phone.snippet}}</p>
-			</li>
-		</ul>
-	</div>
-	
-	<div ng-controller="SearchCtrl">
-		<ul>
-			<li ng-repeat="repo in repos | filter:yourSearch | orderBy:'name'">
-			{{repo.name}}<p> {{repo.username}}</p>
-			</li>
-		</ul>
+	<div class="container well well-large row">
+		<form ng-submit="submit()" ng-controller="ActionFormCtrl" class="form-search">
+			<div class="span12 pagination-centered">
+				<h2>Search on <strong>Github</strong> repositories !</h2>
+				<div class="input-append">
+					Your search <input type="search" class="input-xlarge search-query"
+						ng-model="yourSearch" placeholder="Enter you keyword" required>
+					<button type="submit" class="btn btn-primary" data-loading-text="Loading...">
+						<i class="icon-search"></i> Search
+					</button>
+				</div>
+			</div>
 	</div>
 
+	<div class="container">
+		<div ng-view></div>
+	</div>
 
 </body>
 </html>

@@ -5,7 +5,7 @@
 	version="2.5">
 
 	<servlet>
-		<servlet-name>Jersey Web Application</servlet-name>
+		<servlet-name>app-servlet</servlet-name>
 		<servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
 		<init-param>
 			<param-name>com.sun.jersey.config.property.packages</param-name>
@@ -14,10 +14,9 @@
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>Jersey Web Application</servlet-name>
-		<url-pattern>/webapp/</url-pattern>
+		<servlet-name>app-servlet</servlet-name>
+		<url-pattern>/api/*</url-pattern>
 	</servlet-mapping>
-
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

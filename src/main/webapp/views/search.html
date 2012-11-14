@@ -1,0 +1,23 @@
+
+<div ng-controller="SearchCtrl">
+	Results count : {{repos.repositories.length}}
+
+	<table class="table table-striped">
+	<caption>Github Search Results</caption>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Description</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="repo in repos.repositories | orderBy:'name'">
+				<td>{{repo.name}}</td>
+				<td>{{repo.username}}</td>
+				<td>{{repo.description}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+

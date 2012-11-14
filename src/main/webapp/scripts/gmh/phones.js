@@ -10,9 +10,9 @@ function PhoneListCtrl($scope) {
 }
 
 function SearchCtrl($scope, $http) {
-	  $http.get('search/spring').success(function(data) {
+	  $http.get('/api/myapi/search/spring').success(function(data) {
 	    $scope.repos = data.repositories;
 	  });
 	 
-//	  $scope.orderProp = 'name';
+	  $scope.orderProp = 'name';
 	}
