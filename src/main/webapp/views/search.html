@@ -8,32 +8,56 @@
 			<div class="input-append">
 				Your search <input type="search" class="input-xlarge search-query"
 					ng-model="yourSearch" placeholder="Enter you keyword" required>
-				<button type="submit" class="btn btn-primary"
-					data-loading-text="Loading...">
+				<button type="submit" class="btn btn-primary" data-loading-text="Loading...">
 					<i class="icon-search"></i> Search
 				</button>
 			</div>
 		</div>
 </div>
 
-<!--Results -->
+<!-- Results List -->
 <div ng-controller="SearchCtrl">
 	Results count : {{repos.repositories.length}}
+	
+<!-- 	Search pagination -->
+<div class="pagination">
+  <ul>
+<!--     <li><a href="#">Prev</a></li> -->
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+<!--     <li><a href="#">Next</a></li> -->
+  </ul>
+</div>
 
 	<table class="table table-striped">
 		<caption>Github Search Results</caption>
 		<thead>
 			<tr>
+				<th>Since</th>
 				<th>Name</th>
 				<th>Username</th>
 				<th>Description</th>
+				<th>&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr ng-repeat="repo in repos.repositories | orderBy:'name'">
+				<td><span class="badge badge-inverse">{{ repo.created | date:'dd-MM-yyyy' }}</span></td>
 				<td>{{repo.name}}</td>
 				<td>{{repo.username}}</td>
 				<td>{{repo.description}}</td>
+				<td>
+					<div class="btn-group">
+					  <button class="btn btn-small">
+					  	<i class="icon-signal"></i>Stats
+					  </button>
+					  <button class="btn btn-small">
+					  	<i class="icon-globe"></i>Git url
+					  </button>
+					</div>
+				</td>
 			</tr>
 		</tbody>
 	</table>

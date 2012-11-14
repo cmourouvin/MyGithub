@@ -55,27 +55,7 @@ public class GithubRessources {
 		
 		return simpleSearch;
 	}
-	
-//	@GET @Path("/all2")
-//    @Produces("application/json")
-//    public String getAll2() {
-//		
-//		 ClientConfig cc = new DefaultClientConfig();
-////		    cc.getProperties().put(
-////		        ClientConfig.PROPERTY_FOLLOW_REDIRECTS, true);
-//		Client c = Client.create(cc);
-//		
-//		WebResource r = c.resource(GithubRessources.getBaseURI());
-//		String reponse = r.path("repos").path("cmourouvin").path("springPoke").path("subscribers").accept(MediaType.APPLICATION_JSON).get(ClientResponse.class).toString();
-//		//		String response = r.accept(
-////		        MediaType.APPLICATION_JSON_TYPE,
-////		        MediaType.APPLICATION_XML_TYPE).
-//////		        header("X-FOO", "BAR").
-////		        get(String.class);
-//		
-//        return reponse;
-//    }
-	
+
 	private static URI getBaseURI() {
 	    return UriBuilder.fromUri("https://api.github.com").build();
 	  }
