@@ -1,9 +1,27 @@
+<!-- Search form -->
+<div class="container well well-large row">
+	<form ng-submit="submit()" ng-controller="ActionFormCtrl" class="form-search">
+		<div class="span12 pagination-centered">
+			<h2>
+				Search on <strong>Github</strong> repositories !
+			</h2>
+			<div class="input-append">
+				Your search <input type="search" class="input-xlarge search-query"
+					ng-model="yourSearch" placeholder="Enter you keyword" required>
+				<button type="submit" class="btn btn-primary"
+					data-loading-text="Loading...">
+					<i class="icon-search"></i> Search
+				</button>
+			</div>
+		</div>
+</div>
 
+<!--Results -->
 <div ng-controller="SearchCtrl">
 	Results count : {{repos.repositories.length}}
 
 	<table class="table table-striped">
-	<caption>Github Search Results</caption>
+		<caption>Github Search Results</caption>
 		<thead>
 			<tr>
 				<th>Name</th>

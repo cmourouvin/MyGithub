@@ -25,6 +25,7 @@ body {
 </head>
 <body>
 
+	<!-- 	NAV Bar -->
 	<div class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-inner">
 			<div class="container">
@@ -36,7 +37,7 @@ body {
 					<ul class="nav">
 						<li class="active"><a href="#/search">Search</a></li>
 						<li><a href="#/stats">Stats</a></li>
-						<li><a href="/stats">About me</a></li>
+						<li><a href="#/about">About me</a></li>
 					</ul>
 				</div>
 				<!--/.nav-collapse -->
@@ -44,20 +45,7 @@ body {
 		</div>
 	</div>
 
-	<div class="container well well-large row">
-		<form ng-submit="submit()" ng-controller="ActionFormCtrl" class="form-search">
-			<div class="span12 pagination-centered">
-				<h2>Search on <strong>Github</strong> repositories !</h2>
-				<div class="input-append">
-					Your search <input type="search" class="input-xlarge search-query"
-						ng-model="yourSearch" placeholder="Enter you keyword" required>
-					<button type="submit" class="btn btn-primary" data-loading-text="Loading...">
-						<i class="icon-search"></i> Search
-					</button>
-				</div>
-			</div>
-	</div>
-
+	<!-- 	Content -->
 	<div class="container">
 		<div ng-view></div>
 	</div>

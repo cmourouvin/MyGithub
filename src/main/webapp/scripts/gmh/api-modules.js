@@ -1,6 +1,6 @@
 angular.module('api', [ 'ngResource' ]).factory('GmhApi', function($resource) {
 
-	// Récupération de la ressource : search
+	// RÃ©cupÃ©ration de la ressource : search
 	return $resource('api/myapi/search/:key', {}, {
 		'search' : {method : 'GET'}
 	});

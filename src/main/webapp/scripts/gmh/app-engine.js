@@ -3,9 +3,10 @@
 angular.module('app', ['api']).
   config(function($routeProvider) {
     $routeProvider.
-      when('/', {controller:IndexCtrl, templateUrl:'views/default.html'}).
+      when('/', {controller:IndexCtrl, templateUrl:'views/search.html'}).
       when('/stats', {controller:StatsCtrl, templateUrl:'views/stats.html'}).
       when('/search/:key', {controller:SearchCtrl, templateUrl:'views/search.html'}).
+      when('/about', {controller:AboutCtrl, templateUrl:'views/about.html'}).
       otherwise({redirectTo:'/'});
 });
 
@@ -18,9 +19,12 @@ function StatsCtrl($scope, $location, GmhApi) {
 }
 
 function SearchCtrl($scope,$routeParams, GmhApi) {
-		$scope.repos = GmhApi.search({key:$routeParams.key});
+	$scope.repos = GmhApi.search({key:$routeParams.key});
 }
 
+function AboutCtrl($scope,$routeParams, GmhApi) {
+	console.info('Resource : About');
+}
 
 function ActionFormCtrl($scope,$routeParams,$location, GmhApi) {
 
