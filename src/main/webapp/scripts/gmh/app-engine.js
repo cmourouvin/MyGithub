@@ -10,26 +10,37 @@ angular.module('app', ['api']).
       otherwise({redirectTo:'/search/'});
 });
 
-function IndexCtrl($scope, $location, GmhApi) {
+function IndexCtrl($scope, $location) {
 	console.info('Resource : index');
 }
 
-function StatsCtrl($scope, $location, GmhApi) {
+function StatsCtrl($scope, $location, GmhApiCommiters) {
 	console.info('Resource : Stats');
+	
+	$scope.getDetails = function () {
+		alert ('Details pour ');
+	}
+	
+//	$scope.commiters = GmhApiCommiters.getCommiters({
+//		oname : $routeParams.oname,
+//		pname : $routeParams.pname
+//	});
 }
 
-function SearchCtrl($scope,$routeParams, GmhApi) {
-	$scope.repos = GmhApi.search({key:$routeParams.key});
+function SearchCtrl($scope, $routeParams, GmhApiSearch) {
+	$scope.repos = GmhApiSearch.search({
+		key : $routeParams.key
+	});
 }
 
-function AboutCtrl($scope,$routeParams, GmhApi) {
+function AboutCtrl($scope, $routeParams) {
 	console.info('Resource : About');
 }
 
-function ActionFormCtrl($scope,$routeParams,$location, GmhApi) {
+function ActionFormCtrl($scope, $routeParams, $location) {
 
-	$scope.submit = function () {
-		$location.path('/search/'+this.yourSearch);
+	$scope.submit = function() {
+		$location.path('/search/' + this.yourSearch);
 	};
 	
 //	$scope.save = function() {
@@ -38,4 +49,18 @@ function ActionFormCtrl($scope,$routeParams,$location, GmhApi) {
 //	    });
 //	  }
 	
+	
+	function SomeCtrl($scope) {
+		   $scope.blub = "Test Papa !!";
+		}
+	
+	
+	function ModalCtrl($scope) {
+		   this.setModel = function(data) {
+		      $scope.$apply( function() {
+		         $scope.data = data;
+		      });
+		   }
+		   $scope.setModel = this.setModel;     
+		}
 }

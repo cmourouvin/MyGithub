@@ -1,17 +1,13 @@
 package fr.cem.gitmyhub;
 
-import java.net.URI;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.UriBuilder;
 
-import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
-import com.sun.jersey.api.client.config.ClientConfig;
-import com.sun.jersey.api.client.config.DefaultClientConfig;
+
+import fr.cem.gitmyhub.tools.GitApiTools;
 
 @Path("/myapi")
 public class GithubRessources {
@@ -26,9 +22,7 @@ public class GithubRessources {
 	@Produces("application/json")
 	public String getFromGithubApi() {
 		
-		ClientConfig config = new DefaultClientConfig();
-		Client client = Client.create(config);
-		WebResource serviceGithub = client.resource(GithubRessources.getBaseURI());
+		WebResource serviceGithub = GitApiTools.getWebResourceBase();
 		
 		final String simpleSearch = serviceGithub.
 				path("legacy").
@@ -43,10 +37,8 @@ public class GithubRessources {
 	@Produces("application/json")
 	public String searchByKeywords(@PathParam("key") String key) {
 		
-		ClientConfig config = new DefaultClientConfig();
-		Client client = Client.create(config);
-		WebResource serviceGithub = client.resource(GithubRessources.getBaseURI());
-		
+		WebResource serviceGithub = GitApiTools.getWebResourceBase();
+
 		final String simpleSearch = serviceGithub.
 				path("legacy").
 				path("repos").
@@ -55,9 +47,21 @@ public class GithubRessources {
 		
 		return simpleSearch;
 	}
+	
+	@GET  @Path("/owner/{oname}/project/{pname}")
+	@Produces("application/json")
+	public String getCommitersByProject(@PathParam("oname") String owner, @PathParam("pname") String projectName) {
+		
+		WebResource serviceGithub = GitApiTools.getWebResourceBase();
 
-	private static URI getBaseURI() {
-	    return UriBuilder.fromUri("https://api.github.com").build();
-	  }
+		final String Commiters = serviceGithub.
+				path("repos").
+				path(owner).
+				path(projectName).
+				path("collaborators").accept("application/json").get(String.class);
+		
+		return Commiters;
+	}
+
 	
 }
