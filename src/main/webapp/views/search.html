@@ -1,6 +1,7 @@
 <!-- Search form -->
 <div class="well well-large row">
-	<form ng-submit="submit()" ng-controller="ActionFormCtrl" class="form-search">
+	<form ng-submit="submit()" ng-controller="ActionFormCtrl"
+		class="form-search">
 		<div class="span12 pagination-centered">
 			<h2>
 				Search on <strong>Github</strong> repositories !
@@ -8,7 +9,8 @@
 			<div class="input-append">
 				Your search <input type="search" class="input-xlarge search-query"
 					ng-model="yourSearch" placeholder="Enter you keyword" required>
-				<button type="submit" class="btn btn-primary" data-loading-text="Loading...">
+				<button type="submit" class="btn btn-primary"
+					data-loading-text="Loading...">
 					<i class="icon-search"></i> Search
 				</button>
 			</div>
@@ -18,44 +20,50 @@
 <!-- Results List -->
 <div ng-controller="SearchCtrl">
 	Results count : {{repos.repositories.length}}
-	
-<!-- 	Search pagination -->
-<!-- <div class="pagination"> -->
-<!--   <ul> -->
-<!--     <li><a href="#">Prev</a></li> -->
-<!--     <li><a href="#">1</a></li> -->
-<!--     <li><a href="#">2</a></li> -->
-<!--     <li><a href="#">3</a></li> -->
-<!--     <li><a href="#">4</a></li> -->
-<!--     <li><a href="#">Next</a></li> -->
-<!--   </ul> -->
-<!-- </div> -->
+
+	<!-- 	Search pagination -->
+	<!-- <div class="pagination"> -->
+	<!--   <ul> -->
+	<!--     <li><a href="#">Prev</a></li> -->
+	<!--     <li><a href="#">1</a></li> -->
+	<!--     <li><a href="#">2</a></li> -->
+	<!--     <li><a href="#">3</a></li> -->
+	<!--     <li><a href="#">4</a></li> -->
+	<!--     <li><a href="#">Next</a></li> -->
+	<!--   </ul> -->
+	<!-- </div> -->
 
 	<table class="table table-striped">
 		<caption>Github Search Results</caption>
 		<thead>
 			<tr>
-				<th>Since</th>
-				<th>Name</th>
-				<th>Username</th>
-				<th>Description</th>
+				<th><a href="" ng-click="predicate = 'created'; reverse=!reverse">Since</a></th>
+				<th><a href="" ng-click="predicate = 'name'; reverse=!reverse">Name</a></th>
+				<th><a href="" ng-click="predicate = 'username'; reverse=!reverse">Username</a></th>
+				<th><a href="" ng-click="predicate = 'description'; reverse=!reverse">Description</a></th>
 				<th>&nbsp;</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="repo in repos.repositories | orderBy:'name'">
+			<tr ng-repeat="repo in repos.repositories | orderBy:predicate:reverse">
 				<td><span class="badge badge-inverse">{{ repo.created | date:'dd-MM-yyyy' }}</span></td>
 				<td>{{repo.name}}</td>
 				<td>{{repo.username}}</td>
 				<td>{{repo.description}}</td>
 				<td>
 					<div class="btn-group" ng-controller="StatsCtrl">
-					  <button class="btn btn-small">
-					  	<i class="icon-signal"></i><a href="#myModal">Stats</a>
-					  </button>
-					  <button class="btn btn-small">
-					  	<i class="icon-globe"></i><a href="https://github.com/{{repo.username}}/{{repo.name}}" target="_blank" >Git url</a>
-					  </button>
+						<button class="btn btn-small">
+							<i class="icon-signal"></i><a href="#myModal">Stats Old</a>
+						</button>
+						<!-- 					  <button type="button" data-toggle="modal" data-target="#myModal"> -->
+						<!-- 					  <i class="icon-signal"></i>Stats -->
+						<!-- 					  </button> -->
+						<button class="btn btn-small">
+							<i class="icon-globe"></i><a
+								href="https://github.com/{{repo.username}}/{{repo.name}}"
+								target="_blank">Git url</a>
+						</button>
+					</div>
 				</td>
 			</tr>
 		</tbody>

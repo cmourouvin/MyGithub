@@ -5,6 +5,11 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
 import com.sun.jersey.api.client.WebResource;
 
 import fr.cem.gitmyhub.tools.GitApiTools;
@@ -45,7 +50,38 @@ public class GithubRessources {
 				path("search").
 				path(key).accept("application/json").get(String.class);
 		
-		return simpleSearch;
+		// Manipulation du JSON résultat avant le retour
+		Object o = null;
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObj = null;
+		JSONArray repos = null;
+		
+		try {
+
+			o = parser.parse(simpleSearch);
+			jsonObj = (JSONObject) o;
+			repos = (JSONArray) jsonObj.get("repositories");
+			
+			// Tri des repository en fonction de leur date de création
+//			Collections.sort(repos, new RepositoryComparator());
+//
+//			Iterator<JSONObject> iterator = repos.iterator();
+//			JSONObject tmp=null;
+//			while (iterator.hasNext()) {
+//				tmp = iterator.next();
+//				System.out.println("<< Date: " + tmp.get("created"));
+//			}
+//			
+//			jsonObj.put("repositories",repos);
+			
+			
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		return jsonObj.toJSONString();
 	}
 	
 	@GET  @Path("/owner/{oname}/project/{pname}")
