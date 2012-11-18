@@ -52,17 +52,22 @@
 				<td>{{repo.description}}</td>
 				<td>
 					<div class="btn-group" ng-controller="StatsCtrl">
-						<button class="btn btn-small">
-							<i class="icon-signal"></i><a href="#myModal">Stats Old</a>
+						<button type="button" data-toggle="modal" data-target="#myModal{{repo.username}}" class="btn btn-small" 
+						owner="{{repo.username}}" repo="{{repo.name}}">
+							<i class="icon-signal"></i>Stats
 						</button>
+						<my-modal owner="{{repo.username}}" repo="{{repo.name}}"></my-modal>
 						<!-- 					  <button type="button" data-toggle="modal" data-target="#myModal"> -->
 						<!-- 					  <i class="icon-signal"></i>Stats -->
 						<!-- 					  </button> -->
-						<button class="btn btn-small">
-							<i class="icon-globe"></i><a
-								href="https://github.com/{{repo.username}}/{{repo.name}}"
-								target="_blank">Git url</a>
+						<button class="btn btn-small" ng-click='window.open("https://github.com/{{repo.username}}/{{repo.name}}")'>
+							<i class="icon-globe"></i> Git Url
+<!-- 							<a -->
+<!-- 								href="https://github.com/{{repo.username}}/{{repo.name}}" -->
+<!-- 								target="_blank">Git url</a> -->
 						</button>
+<!-- 						<my-modal owner="cmourouvin" repo="springPoke"></my-modal> -->
+<!-- 						<my-modal2 owner="{{repo.username}}" repo="{{repo.name}}"></my-modal2> -->
 					</div>
 				</td>
 			</tr>

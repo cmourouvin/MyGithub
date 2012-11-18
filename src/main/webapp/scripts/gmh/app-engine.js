@@ -1,6 +1,6 @@
 // Controleur principal
 
-angular.module('app', ['api']).
+angular.module('app', ['api','components']).
   config(function($routeProvider) {
     $routeProvider.
       when('/', {controller:IndexCtrl, templateUrl:'views/default.html'}).
@@ -19,8 +19,10 @@ function StatsCtrl($scope, $location, GmhApiCommiters) {
 	
 	$scope.getDetails = function () {
 		alert ('Details pour ');
-	}
+	};
 	
+	console.info ($scope);
+
 //	$scope.commiters = GmhApiCommiters.getCommiters({
 //		oname : $routeParams.oname,
 //		pname : $routeParams.pname
