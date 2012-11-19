@@ -46,7 +46,7 @@ var componentsModule = angular.module('components', []);
 //});
 
 
-componentsModule.directive('myModal', function() {
+componentsModule.directive('myModal', function($interpolate) {
 	return {
 		restrict : 'E',
 		replace:true,
@@ -56,16 +56,23 @@ componentsModule.directive('myModal', function() {
 		 },
 		templateUrl : 'views/modal.html',
 		link : function(scope, iElement, iAttrs) {
-			console.info('------');
-			console.log(iAttrs);
-			console.log(iAttrs.owner);
-			console.log(iAttrs.repo);
-			
+//			console.info('------');
+//			console.log(iAttrs);
+//			console.log(iAttrs.owner);
+//			console.log(iAttrs.repo);
+////			var v1 = $interpolate(iAttrs.owner);
+////			var v2 = $interpolate(iAttrs.repo);
+////			console.info('+++++++++++');
+////			console.log(v1);
+////			console.log(v2);
+			console.info('**************');
+			console.log(scope);
+
 			iAttrs.$observe('owner', function(value) {
 			    console.log('owner has changed value to ' + value);
 			  });
 			
-			iAttrs.$observe('rep', function(value) {
+			iAttrs.$observe('repo', function(value) {
 			    console.log('repo has changed value to ' + value);
 			  });
 		}

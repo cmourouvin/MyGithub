@@ -90,13 +90,34 @@ public class GithubRessources {
 		
 		WebResource serviceGithub = GitApiTools.getWebResourceBase();
 
-		final String Commiters = serviceGithub.
+		final String commiters = serviceGithub.
 				path("repos").
 				path(owner).
 				path(projectName).
 				path("collaborators").accept("application/json").get(String.class);
 		
-		return Commiters;
+
+		// Manipulation du JSON résultat avant le retour
+		Object o = null;
+		JSONParser parser = new JSONParser();
+		JSONObject jsonObj = new JSONObject();
+		JSONArray repos = null;
+		
+
+			try {
+				o = parser.parse(commiters);
+////				repos = (JSONArray) o;
+////				repos = (JSONArray) jsonObj;
+//				jsonObj = (JSONObject) o;
+				repos = (JSONArray)o ;
+				jsonObj.put("commiters", repos);
+				
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+		return jsonObj.toJSONString();
 	}
 
 	

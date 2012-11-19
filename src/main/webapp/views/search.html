@@ -52,11 +52,14 @@
 				<td>{{repo.description}}</td>
 				<td>
 					<div class="btn-group" ng-controller="StatsCtrl">
-						<button type="button" data-toggle="modal" data-target="#myModal{{repo.username}}" class="btn btn-small" 
-						owner="{{repo.username}}" repo="{{repo.name}}">
+<!-- 					 ng-click="getDetails()"  -->
+						<button ng-click="getDetails(prop,depo)" type="button" data-toggle="modal" data-target="#myModal-{{repo.username}}" class="btn btn-small">
 							<i class="icon-signal"></i>Stats
 						</button>
-						<my-modal owner="{{repo.username}}" repo="{{repo.name}}"></my-modal>
+<!-- 						<input type="hidden" ng-model="stats.owner" value="{{repo.username}}" /> -->
+<!-- 						<input type="hidden" ng-model="stats.repo" value="{{repo.name}}" /> -->
+
+<!-- 						<my-modal owner="{{repo.username}}" repo="{{repo.name}}">MY MODAL</my-modal> -->
 						<!-- 					  <button type="button" data-toggle="modal" data-target="#myModal"> -->
 						<!-- 					  <i class="icon-signal"></i>Stats -->
 						<!-- 					  </button> -->
@@ -66,8 +69,34 @@
 <!-- 								href="https://github.com/{{repo.username}}/{{repo.name}}" -->
 <!-- 								target="_blank">Git url</a> -->
 						</button>
-<!-- 						<my-modal owner="cmourouvin" repo="springPoke"></my-modal> -->
-<!-- 						<my-modal2 owner="{{repo.username}}" repo="{{repo.name}}"></my-modal2> -->
+
+						<div ng-controller="StatsCtrl" id="myModal-{{repo.username}}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						  <ul >
+						  		<li ng-repeat="detail in details.commiters">ID : {{detail.id}} - {{detail.login}} </li>
+						  	</ul>
+						  <div class="modal-header">
+						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+						    <h3 id="myModalLabel">Statistics for {{repo.name}}</h3>
+						    <input type="hidden" ng-model="prop" value="{{repo.owner}}" />
+ 							<input type="hidden" ng-model="depo" value="{{repo.name}}" /> 
+						  </div>
+						  <div class="modal-body">
+						  <h1>HELLO</h1>
+						  TEST TESTS TESTTTTTTTTTTTTTTTTTTTTTTTTT
+						  <ul>
+						  		<li ng-repeat="detail in details.commiters">ID : {{detail.id}} - {{detail.login}} </li>
+						  	</ul>
+<!-- 						    <p ng-repeat="detail in details.commiters" > -->
+<!-- 						    	ID : {{detail.id}} -->
+<!-- 						    </p> -->
+						    
+						  </div>
+						  <div class="modal-footer">
+						    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+						  </div>
+						</div>
+
+						
 					</div>
 				</td>
 			</tr>
@@ -75,7 +104,56 @@
 	</table>
 </div>
 
+<!-- <div ng-controller="ctrl"> -->
+<!-- <div ui-modal ng-model="modalShown" id="myModal"> -->
+<!--   <div class="modal-header"> -->
+<!--     <button type="button" class="close" data-dismiss="modal">x</button> -->
+<!--     <h3>Modal header</h3> -->
+<!--   </div> -->
+<!--   <div class="modal-body"> -->
+<!--     <p>My name is {{name}}</p> -->
+<!--     <ul> -->
+<!--     <li ng-repeat="phone in phones">ID : {{phone.name}} - {{phone.snippet}} </li> -->
+<!--                               </ul> -->
+<!--   </div> -->
+<!--   <div class="modal-footer"> -->
+<!--     <a href="" class="btn" data-dismiss="modal">Close</a> -->
+<!--     <a href="" class="btn btn-primary">Save changes</a> -->
+<!--   </div> -->
+<!-- </div> -->
+<!-- <a ng-click="modalShown=true">Settings</a> -->
+<!--     </div>​ -->
 
+<!-- <div id="modalGuy" class="fade" ui-modal ng-model="modalShown"> -->
+<!-- 							<div class="modal-header"> -->
+<!-- 								<h1>Modalin'!</h1> -->
+<!-- 							</div> -->
+<!-- 							<div class="modal-body"> -->
+<!-- 								<p>Cool beans, dude.</p> -->
+<!-- 							</div> -->
+<!-- 							<div class="modal-footer"> -->
+<!-- 								<a class="btn" data-dismiss="modal">Close bootstrap way</a> <a -->
+<!-- 									class="btn" ng-click="modalShown=false">Close ng-model way</a> -->
+<!-- 							</div> -->
+<!-- 						</div> -->
+<!-- 						<a class="btn" ng-click="modalShown=true">Open Modal with -->
+<!-- 							ng-model</a><br> <a class="btn" data-toggle="modal" -->
+<!-- 							href="#modalGuy">Open Modal with data-toggle="modal"</a> -->
+
+
+<div >
+<div ui-modal ng-model="modalShown2" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">x</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <p>My name is {{name}}</p>
+  </div>
+  <div class="modal-footer">
+    <a href="" class="btn" data-dismiss="modal">Close</a>
+    <a href="" class="btn btn-primary">Save changes</a>
+  </div>
 </div>
-
-
+<a ng-click="modalShown2=true">Settings</a>
+    </div>​

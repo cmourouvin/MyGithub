@@ -1,6 +1,6 @@
 // Controleur principal
 
-angular.module('app', ['api','components']).
+angular.module('app', ['api','components','ui']).
   config(function($routeProvider) {
     $routeProvider.
       when('/', {controller:IndexCtrl, templateUrl:'views/default.html'}).
@@ -17,10 +17,33 @@ function IndexCtrl($scope, $location) {
 function StatsCtrl($scope, $location, GmhApiCommiters) {
 	console.info('Resource : Stats');
 	
-	$scope.getDetails = function () {
-		alert ('Details pour ');
+	$scope.getDetails = function (p,d) {
+//		console.info($location);
+//		console.info($scope);
+//		console.info('owner :');
+//		console.info(p);
+//		console.info(this.prop);
+//		console.info('repo :');
+//		console.info(d);
+//		console.info(this.depo);
+//		this.details = GmhApiCommiters.getCommiters({
+//			oname : 'cmourouvin',
+//			pname : 'springPoke'
+//		});
+//		console.info ($scope.details);
+//		console.info (this.details);
+//		console.info (this.details);
+
 	};
 	
+	console.info ('-- OUT OF function');
+//	console.info ($scope);
+	$scope.details = GmhApiCommiters.getCommiters({
+		oname : 'cmourouvin',
+		pname : 'springPoke'
+	});
+	
+//	$scope.details = "Details !!!!!!!!!!!!!!!!!!! ALO";
 	console.info ($scope);
 
 //	$scope.commiters = GmhApiCommiters.getCommiters({
