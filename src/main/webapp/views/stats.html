@@ -1,13 +1,13 @@
 <div ng-controller="StatsCtrl">
 <ul class="pager">
-  <li><a href="#" onclick="history.back(-1)">Back to search</a></li>
+  <li><a href="#" onclick="history.back()">Back to search</a></li>
 </ul>
 <div class="container well well-large row">
 
 <h3>Current collaborators : <strong>{{collabs.commiters.length}}</strong> </h3>
 
 <div class="span12">
-		<span class="badge badge-inverse" ng-repeat="commiter in collabs.commiters">
+		<span ng-repeat="commiter in collabs.commiters">
 			<i class="icon-user"></i>
 			<a href="{{commiter.url}}" target="_blank" >{{commiter.login}}</a>
 		</span>

@@ -20,18 +20,6 @@
 <!-- Results List -->
 <div ng-controller="SearchCtrl">
 
-	<!-- 	Search pagination -->
-	<!-- <div class="pagination"> -->
-	<!--   <ul> -->
-	<!--     <li><a href="#">Prev</a></li> -->
-	<!--     <li><a href="#">1</a></li> -->
-	<!--     <li><a href="#">2</a></li> -->
-	<!--     <li><a href="#">3</a></li> -->
-	<!--     <li><a href="#">4</a></li> -->
-	<!--     <li><a href="#">Next</a></li> -->
-	<!--   </ul> -->
-	<!-- </div> -->
-
 	<table class="table table-striped">
 		<caption>Github Search Results (count : {{repos.repositories.length}})</caption>
 		<thead>
@@ -53,11 +41,11 @@
 					<div class="btn-group" ng-controller="StatsCtrl">
 
 						<button ng-click="getDetails(repo)" type="button" class="btn btn-small">
-							<i class="icon-signal"></i>Stats
+							<i class="icon-signal"></i> Stats
 						</button>
 <!-- 						<my-modal owner="{{repo.username}}" repo="{{repo.name}}">MY MODAL</my-modal> -->
 						<button class="btn btn-small">
-							<i class="icon-globe"></i><a href="https://github.com/{{repo.username}}/{{repo.name}}" target="_blank">Git Url</a>
+							<i class="icon-globe"></i> <a href="https://github.com/{{repo.username}}/{{repo.name}}" target="_blank">Git Url</a>
 						</button>
 						
 					</div>

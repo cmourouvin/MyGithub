@@ -7,7 +7,6 @@
 angular.module('app', ['api','components','ui']).
   config(function($routeProvider) {
     $routeProvider.
-      when('/', {controller:IndexCtrl, templateUrl:'views/default.html'}).
       when('/stats/:owner/repo/:repo', {controller:StatsCtrl, templateUrl:'views/stats.html'}).
       when('/search/:key', {controller:SearchCtrl, templateUrl:'views/search.html'}).
       when('/about', {templateUrl:'views/about.html'}).
@@ -15,8 +14,6 @@ angular.module('app', ['api','components','ui']).
       otherwise({redirectTo:'/search/'});
 });
 
-function IndexCtrl($scope, $location) {
-}
 
 function StatsCtrl($scope, $location, $routeParams, GmhApiCommiters) {
 	
@@ -26,10 +23,12 @@ function StatsCtrl($scope, $location, $routeParams, GmhApiCommiters) {
 		$location.path('/stats/' + repo.owner + '/repo/' + repo.name);
 	};
 	
-	$scope.collabs = GmhApiCommiters.getCommiters({
-		oname : $routeParams.owner,
-		pname : $routeParams.repo
-	});
+	if  ( $routeParams.owner != null ) {
+		$scope.collabs = GmhApiCommiters.getCommiters({
+			oname : $routeParams.owner,
+			pname : $routeParams.repo
+		});
+	}
 	
 }
 
