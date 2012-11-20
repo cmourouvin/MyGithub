@@ -60,14 +60,12 @@ public class GithubRessources {
 		
 		WebResource serviceGithub = GitApiHelper.getWebResourceBase();
 
-		// Récupérations des collaborateurs (commiters) d'un repository
 		final String commiters = serviceGithub.
 				path("repos").
 				path(owner).
 				path(projectName).
 				path("collaborators").accept("application/json").get(String.class);
 		
-		// Récupérations des collaborateurs (commiters) d'un repository
 		final String commits = serviceGithub.
 				path("repos").
 				path(owner).

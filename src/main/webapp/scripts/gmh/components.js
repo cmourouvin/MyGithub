@@ -12,33 +12,8 @@ componentsModule.directive('myModal', function($interpolate,$rootScope) {
 		compile : function() {
 		      return {
 		        pre : function(scope, iElement, iAttrs) {
-		        	console.info('PRE');
-		        	console.log(iAttrs);
-					console.log(iAttrs.owner);
-					console.log(iAttrs.repo);
-					console.info('PRE COMPILE ');
-					var $elem = $(iElement);
-					console.log(iElement);
-					console.log($elem);
-					angular.compile($elem)().$apply();
-					console.log(iAttrs);
-					console.log(iAttrs.owner);
-					console.log(iAttrs.repo);
-					
 		        }, //this is called before the directive element is attached to the DOM
 		        post : function(scope, iElement, iAttrs) { 
-		        	console.info('POST');
-		        	console.log(iAttrs);
-					console.log(iAttrs.owner);
-					console.log(iAttrs.repo);
-					console.info('POST COMPILE ');
-					var $elem = $(iElement);
-					console.log(iElement);
-					console.log($elem);
-					angular.compile($elem)().$apply();
-					console.log(iAttrs);
-					console.log(iAttrs.owner);
-					console.log(iAttrs.repo);
 		        } //this is called after the directive element is attached to the DOM (same as link)
 		      };
 		    },
