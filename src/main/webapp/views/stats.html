@@ -1,10 +1,46 @@
-<div>
+<div ng-controller="StatsCtrl">
+<ul class="pager">
+  <li><a href="#" onclick="history.back(-1)">Back to search</a></li>
+</ul>
+<div class="container well well-large row">
 
-	<ul>
-		<li ng-repeat="commiter in commiters">{{commiter.id}}
-			<p>{{commiter.login}}</p>
-		</li>
-	</ul>
+<h3>Current collaborators : <strong>{{collabs.commiters.length}}</strong> </h3>
 
+<div class="span12">
+		<span class="badge badge-inverse" ng-repeat="commiter in collabs.commiters">
+			<i class="icon-user"></i>
+			<a href="{{commiter.url}}" target="_blank" >{{commiter.login}}</a>
+		</span>
+</div>
+</div>
+
+<!-- Bare de participation -->
+<div class="container well well-large row">
+
+<h3>Commits : <strong>{{collabs.commits.length}}</strong> </h3>
+
+<table class="table">
+		<caption>Commits statistics</caption>
+		<thead>
+			<tr>
+				<th width="20%"><a href="" ng-click="predicate = 'commiter'; reverse=!reverse">Commiter</a></th>
+				<th><a href="" ng-click="predicate = 'commits'; reverse=!reverse">Commits (%)</a></th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr ng-repeat="stat in collabs.stats | orderBy:predicate:reverse">
+				<td><span class="badge badge-inverse">{{ stat.commiter }} ({{(stat.commits/collabs.commits.length)*100 | number:0 }}%)</span></td>
+				<td>
+				<div class="progress">
+				<div class="bar badge-info" style="width: {{(stat.commits/collabs.commits.length)*100 | number:0}}%;"></div>
+				</div>
+				</td>
+			</tr>
+
+		</tbody>
+	</table>
+
+</div>
 
 </div>

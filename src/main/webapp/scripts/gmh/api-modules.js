@@ -1,3 +1,7 @@
+/**
+ * Ressources Angulars qui utilisent les services REST publiés par JAX-RS
+ */
+
 var apiModule = angular.module('api', [ 'ngResource' ]);
 
 apiModule.factory('GmhApiSearch', function($resource) {
